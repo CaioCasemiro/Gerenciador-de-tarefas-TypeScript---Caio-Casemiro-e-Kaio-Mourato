@@ -24,15 +24,15 @@ while (true) {
             break
         case 1:
             console.clear()
-            extras.AdicionarNovaTarefa()
+            extras.adicionarNovaTarefa()
             break
         case 2:
             console.clear()
-            extras.ListarTarefas()
+            extras.listarTarefas()
             break
         case 3:
             console.clear()
-            extras.EditarTarefas()
+            extras.editarTarefas()
             break
         case 4:
             console.clear()
@@ -41,22 +41,22 @@ while (true) {
                 console.clear()
                 console.log('Entrada Inválida. Tente Novamente.')
             } else if (opcao === 1) {
-                extras.RemoverTarefaPendente()
+                extras.removerTarefaPendente()
             } else {
-                extras.RemoverTarefaConcluida()
+                extras.removerTarefaConcluida()
             }
             break
         case 5:
             console.clear()
-            extras.MarcarComoConcluido()
+            extras.marcarComoConcluido()
             break
         case 6:
             console.clear()
-            extras.PesquisarTarefa()
+            extras.pesquisarTarefa()
             break
         case 7:
             console.clear()
-            extras.ResumoDasTarefas()
+            extras.resumoDasTarefas()
             break;
         default:
             console.log('Opção inválida.')

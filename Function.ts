@@ -9,7 +9,7 @@ interface Tarefa{
 const listaConcluido: Tarefa[] = []
 const listaPendente: Tarefa[] = []
 
-export function AdicionarNovaTarefa(){
+export function adicionarNovaTarefa(){
     console.clear
     console.log('>>>> ADICIONAR NOVA TAREFA')
 
@@ -42,34 +42,34 @@ export function AdicionarNovaTarefa(){
         DESCRIÇÃO: prompt('Insira a descrição da tarefa: ') || '',
         VENCIMENTO: datavenc(),
         PRIORIDADE: (() => {
-            const prioridadeNumero = prompt('Insira a prioridade da tarefa (1 = BAIXA, 2 = MÉDIA, 3 = ALTA): ') || '1';
-            let prioridadeTexto: 'BAIXA' | 'MÉDIA' | 'ALTA';
+            const prioridadeNumero = prompt('Insira a prioridade da tarefa (1 = BAIXA, 2 = MÉDIA, 3 = ALTA): ') || '1'
+            let prioridadeTexto: 'BAIXA' | 'MÉDIA' | 'ALTA'
 
             switch (prioridadeNumero) {
                 case '1':
-                    prioridadeTexto = 'BAIXA';
-                    break;
+                    prioridadeTexto = 'BAIXA'
+                    break
                 case '2':
-                    prioridadeTexto = 'MÉDIA';
-                    break;
+                    prioridadeTexto = 'MÉDIA'
+                    break
                 case '3':
-                    prioridadeTexto = 'ALTA';
-                    break;
+                    prioridadeTexto = 'ALTA'
+                    break
                 default:
-                    console.log('Opção inválida. Usando padrão BAIXA.');
-                    prioridadeTexto = 'BAIXA';
-                    break;
+                    console.log('Opção inválida. Usando padrão BAIXA.')
+                    prioridadeTexto = 'BAIXA'
+                    break
             }
             return prioridadeTexto;
         })(),
         CRIAÇÃO: new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' })
     }
-    listaPendente.push(novaTarefa);
-    console.log('Tarefa adicionada com sucesso!');
-    console.table(listaPendente);
+    listaPendente.push(novaTarefa)
+    console.log('Tarefa adicionada com sucesso!')
+    console.table(listaPendente)
 }
 
-export function ListarTarefas(){
+export function listarTarefas(){
     console.clear()
 
     let escolha: number
@@ -224,7 +224,7 @@ Qual você deseja ver?`)!)
     }
 }
 
-export function RemoverTarefaConcluida(){
+export function removerTarefaConcluida(){
     console.clear()
     console.log('>>>> REMOVER TAREFA CONCLUIDA')
     console.table(listaConcluido)
@@ -249,7 +249,7 @@ export function RemoverTarefaConcluida(){
     console.clear()
 }
 
-export function RemoverTarefaPendente(){
+export function removerTarefaPendente(){
     console.clear()
     console.log('>>>> REMOVER TAREFA PENDENTE')
     console.table(listaPendente)
@@ -274,7 +274,7 @@ export function RemoverTarefaPendente(){
     console.clear()
 }
 
-export function PesquisarTarefa(){
+export function pesquisarTarefa(){
     console.clear()
     console.log('>>>> PESQUISAR TAREFA')
     const tarefaPesquisada = prompt('Digite o TITULO ou a DESCRIÇÃO da tarefa que está procurando: ') || ''
@@ -295,7 +295,7 @@ export function PesquisarTarefa(){
     }
 }
 
-export function MarcarComoConcluido(){
+export function marcarComoConcluido(){
     console.clear()
     console.log('>>>> MARCAR TAREFA COMO CONCLUÍDA')
     console.table(listaPendente)
@@ -307,15 +307,15 @@ export function MarcarComoConcluido(){
     console.clear()
 }
 
-export function ResumoDasTarefas() {
+export function resumoDasTarefas() {
     console.clear()
-    console.log('>>>> RESUMO DAS TAREFAS');
+    console.log('>>>> RESUMO DAS TAREFAS')
 
     const TotalDeTarefas: number = listaConcluido.length + listaPendente.length
     const TotalDePendentes: number = listaPendente.length
     const TotalDeConcluidos: number = listaConcluido.length
 
-    function TarefaMaisProximaDeVencer(): Tarefa | null {
+    function tarefaMaisProximaDeVencer(): Tarefa | null {
         const agora: Date = new Date()
         let tarefaMaisProxima: Tarefa | null = null
         let menorDiferenca: number = Infinity
@@ -333,11 +333,11 @@ export function ResumoDasTarefas() {
         return tarefaMaisProxima
     }
 
-    const tarefaProxima: Tarefa | null = TarefaMaisProximaDeVencer()
+    const tarefaProxima: Tarefa | null = tarefaMaisProximaDeVencer()
 
     console.log(`Existem ${TotalDeTarefas} registradas no gerenciador
         ${TotalDePendentes} são tarefas pendentes
-        ${TotalDeConcluidos} são tarefas concluídas`);
+        ${TotalDeConcluidos} são tarefas concluídas`)
 
     if (tarefaProxima) {
         const dataFormatada: string = new Date(tarefaProxima.VENCIMENTO.split('/').reverse().join('-')).toLocaleDateString('pt-BR')
@@ -346,7 +346,7 @@ export function ResumoDasTarefas() {
         console.log('Não há tarefas pendentes.')
     }
 }
-export function EditarTarefas(){
+export function editarTarefas(){
     console.clear()
     console.log('>>>> EDITAR TAREFA')
     console.table(listaPendente)
@@ -373,42 +373,42 @@ Qual propriedade você deseja editar?`)
 
 switch (propriedade) {
     case '1':
-        listaPendente[IDTarefaEditar].TITULO = prompt('Digite o novo título: ') || listaPendente[IDTarefaEditar].TITULO;
-        break;
+        listaPendente[IDTarefaEditar].TITULO = prompt('Digite o novo título: ') || listaPendente[IDTarefaEditar].TITULO
+        break
     case '2':
-        listaPendente[IDTarefaEditar].DESCRIÇÃO = prompt('Digite a nova descrição: ') || listaPendente[IDTarefaEditar].DESCRIÇÃO;
-        break;
+        listaPendente[IDTarefaEditar].DESCRIÇÃO = prompt('Digite a nova descrição: ') || listaPendente[IDTarefaEditar].DESCRIÇÃO
+        break
     case '3':
-        let dataVencimentoStr = prompt('Insira a data de VENCIMENTO da tarefa no formato dd/mm/aaaa: ');
+        let dataVencimentoStr = prompt('Insira a data de VENCIMENTO da tarefa no formato dd/mm/aaaa: ')
         if (dataVencimentoStr) {
-            let [dia, mes, ano] = dataVencimentoStr.split('/').map(Number);
+            let [dia, mes, ano] = dataVencimentoStr.split('/').map(Number)
             if (!isNaN(dia) && !isNaN(mes) && !isNaN(ano) && dia > 0 && dia <= 31 && mes > 0 && mes <= 12 && ano >= 1900) {
-                listaPendente[IDTarefaEditar].VENCIMENTO = `${dia.toString().padStart(2, '0')}/${mes.toString().padStart(2, '0')}/${ano}`;
+                listaPendente[IDTarefaEditar].VENCIMENTO = `${dia.toString().padStart(2, '0')}/${mes.toString().padStart(2, '0')}/${ano}`
             } else {
-                console.log('Data inválida. Certifique-se de inserir a data no formato dd/mm/aaaa.');
+                console.log('Data inválida. Certifique-se de inserir a data no formato dd/mm/aaaa.')
             }
         }
-        break;
+        break
     case '4':
-        let prioridade = parseInt(prompt('Defina o grau de PRIORIDADE da tarefa (1 = Baixa, 2 = Média, 3 = Alta): ') || '');
+        let prioridade = parseInt(prompt('Defina o grau de PRIORIDADE da tarefa (1 = Baixa, 2 = Média, 3 = Alta): ') || '')
         switch (prioridade) {
             case 1:
-                listaPendente[IDTarefaEditar].PRIORIDADE = 'BAIXA';
-                break;
+                listaPendente[IDTarefaEditar].PRIORIDADE = 'BAIXA'
+                break
             case 2:
-                listaPendente[IDTarefaEditar].PRIORIDADE = 'MÉDIA';
-                break;
+                listaPendente[IDTarefaEditar].PRIORIDADE = 'MÉDIA'
+                break
             case 3:
-                listaPendente[IDTarefaEditar].PRIORIDADE = 'ALTA';
-                break;
+                listaPendente[IDTarefaEditar].PRIORIDADE = 'ALTA'
+                break
             default:
-                console.log('Prioridade inválida. Por favor, escolha entre 1, 2 ou 3.');
-                continue;
+                console.log('Prioridade inválida. Por favor, escolha entre 1, 2 ou 3.')
+                continue
         }
-        break;
+        break
     default:
-        console.log('Escolha inválida!');
-        continue;
+        console.log('Escolha inválida!')
+        continue
 }
 
     while (true){
